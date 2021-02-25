@@ -1,3 +1,10 @@
+//Basic Calculator Program
+//Use format num1+num2, num1-num2, num1*num2, or num1/num2.
+//This is the only format that is accepted.
+//Enter format into input and it will print the result!
+
+//Created by Luke Dobson, ITT-310, 2.24.21
+
 #include<stdio.h> // need to include stdio.h library
 
 int main(void)
