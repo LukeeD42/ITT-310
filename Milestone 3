@@ -1,0 +1,35 @@
+//Welcome to the Basic Calculator v2!
+//Enter two numbers that you want added, subtracted, multiplied, and / or divided!
+//This program will show the results to all four signs.
+
+//Created by Luke Dobson, ITT-310, 3.19.21
+
+#include <stdio.h>
+
+int main()
+{
+   int first, second, *x, *y, sum, difference, multiply, divide; //integers to define numbers and calculator expression
+   
+   
+   scanf("%d%d", &first, &second);
+
+   x = &first;                          //first num
+   y = &second;                         //second num
+
+   sum = *x + *y;                       //functions of the calculator
+   difference = *x - *y;
+   multiply = *x * *y;
+   divide = *x / *y;
+   
+
+   printf("Sum of the numbers (add) = %d\n", sum);                //printing sum of x and y
+   
+   printf("Difference of the numbers (subtract) = %d\n", difference);      //printing difference of x and y
+   
+   printf("Numbers multiplied (multiply) = %d\n", multiply);           //printing product of x and y
+   
+   printf("Numbers divided (divide) = %d\n", divide);                //printing division of x and y
+   
+
+   return 0;
+}
