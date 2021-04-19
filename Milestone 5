@@ -1,0 +1,94 @@
+// Calculator Milestone Project 5
+// Created by Luke Dobson
+// Date last updated: 4.18.24
+// ITT-310
+
+
+#include <stdio.h>
+////////////////// this will satisfy structure requirement
+struct userInfo{           
+	int age, year;
+	char fname[30];
+};
+///////////////// functions (declared here, defined below main())
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+int divide(int a, int b);
+int remainder(int a, int b);
+ 
+int main(){
+	FILE * fPointer; // file pointer
+    
+     // first initiate structure for user info.
+	struct userInfo info;  // creates a variable 'info' of datatype userInfo
+    int userIn[3];  // this array will contain the operator and two numbers. operator to be stored in index 0 as an int.
+    int result;     // final result
+    int r;          // this will be needed for the division function and will store remainder via remainder function
+    // lines 24-31 will scan user info into the info structure;
+    printf("Welcome to your personalized calculator\n");  // intro
+    printf("Enter your age, \n"); // age prompt
+    scanf("%d", &info.age);       // scan for age an store in info.age
+    printf("Enter current year number at GCU \n");
+    scanf("%d", &info.year);      // scan for year and store in info.year
+	printf("What is your first name?\n");
+	scanf("%s", &info.fname);     // scan for first name stoe inf info.fname
+	printf("Name: %s, Age: %d, Year: %d\n", info.fname, info.age, info.year); // print out entered info
+	printf(" \n");
+	printf("Lopes up! \n");
+	printf(" \n");
+	/////////////////////////////////////////////////////
+	    ////////// Prompt for operation
+		printf("Please enter the operation you would like performed \n");
+		printf("Press 1 for + | 2 for - | 3 for * | 4 for /\n");  // using numbers so it can be used in int array (which is stored in userIn[0]
+	    scanf("%d", &userIn[0]);
+	    ///////// Prompt for first and second number
+	    printf("Enter the first number:\n");
+	    scanf("%d", &userIn[1]); // store first number in the second index of array userIn[1] (index 1)
+	    printf("Enter the second number\n");
+	    scanf("%d", &userIn[2]); // store second number in the last index of array userIn[2] (index 2)
+	      
+	switch(userIn[0])      // determine operation in first index of array userIn.
+    {
+        case 1:
+        	result = add(userIn[1], userIn[2]); // if add the put 1st and 2nd #s in add function and print result
+            printf("%d + %d = %d\n", userIn[1], userIn[2], result);
+            break;
+        case 2:
+        	result = subtract(userIn[1], userIn[2]);
+            printf("%d - %d = %d\n", userIn[1], userIn[2], result);
+            break;
+        case 3:
+        	result = multiply(userIn[1], userIn[2]);
+            printf("%d * %d = %d\n", userIn[1], userIn[2], result);
+            break;
+        case 4:
+        	result = divide(userIn[1], userIn[2]);
+        	r = remainder(userIn[1], userIn[2]);
+            printf("%d / %d = %d, remainder %d\n", userIn[1], userIn[2], result, r);
+            break;              
+    }
+    //  file i/o 
+    fPointer = fopen("results.txt", "w"); // will create and write to a file called results.txt
+    fprintf(fPointer, "%s, the result of your calculation was: %d", info.fname, result);
+    fclose(fPointer); // close pointer 
+	return 0;	
+}
+/////////// defining the functions
+int add(int a, int b){  // addition function
+	return a + b;
+}
+
+int subtract(int a, int b){ // subtraction function
+	return a - b;
+}
+
+int multiply(int a, int b){  // multiplication function
+	return a * b;
+}
+int divide(int a, int b){  // divide function
+	return a / b;
+}
+int remainder(int a, int b){  // remainder function
+	return a % b;
+}
